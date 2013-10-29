@@ -15,8 +15,7 @@ def make_change(cents)
   coins = {}
   US_COINSET.each do |coin_name, coin_value|
     if cents >= coin_value
-      coins[coin_name] = cents / coin_value
-      cents=cents % coin_value
+      coins[coin_name], cents = cents.divmod(coin_value)
     end
   end
   coins
