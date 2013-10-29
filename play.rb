@@ -1,11 +1,41 @@
 # you know when you go to order a sandwich in America
 # and you give them money and they give you change
 # there's a robot that makes the change for you
+
+
 def make_change(cents)
 
-
-	return coins
+	if cents == 0
+		return {}
+	else
+		return {:pennies => 1}
+	end
 end
+
+
+
+
+
+
+# make_change(110) #=> {:dollar => 1, :dime => 1}
+
+p make_change(0) == {}
+
+p make_change(1) == {:pennies => 1}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # design decisions:
 #
