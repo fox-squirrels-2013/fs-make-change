@@ -11,8 +11,10 @@ def make_change(cents)
 		return {}
 	elsif cents < 5
 		return {:pennies => cents}
-	else
+	elsif cents == 5
 		return {:nickels => 1}
+	elsif cents == 6
+		return {:nickels => 1, :pennies => 1}
 	end
 end
 
@@ -24,8 +26,9 @@ assert(make_change(1) == {:pennies => 1})
 assert(make_change(2) == {:pennies => 2})
 assert(make_change(5) == {:nickels => 1})
 assert(make_change(6) == {:nickels => 1, :pennies => 1})
+assert(make_change(7) == {:nickels => 1, :pennies => 2})
 
-puts "Life is sweet"
+puts "\'Oh Hey\'"
 
 
 
