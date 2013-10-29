@@ -32,12 +32,18 @@ end
 
 # The tests
 
+# boundary cases
 assert(make_change(0) == {})
 assert(make_change(1) == {:pennies => 1})
-assert(make_change(2) == {:pennies => 2})
 assert(make_change(5) == {:nickels => 1})
-assert(make_change(6) == {:nickels => 1, :pennies => 1})
 assert(make_change(10) == {:dimes => 1})
 assert(make_change(25) == {:quarters => 1})
+
+# examples
+assert(make_change(2) == {:pennies => 2})
+assert(make_change(6) == {:nickels => 1, :pennies => 1})
+assert(make_change(17) == {:dimes => 1, :nickels => 1, :pennies => 2})
+assert(make_change(34) == {:quarters=>1, :nickels=>1, :pennies=>4})
+assert(make_change(83) == {:quarters=>3, :nickels=>1, :pennies=>3})
 
 puts "OK"
