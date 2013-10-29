@@ -6,17 +6,18 @@ def assert(test)
 end
 
 def make_change(cents)
+  coins = {}
 
-	if cents == 0
-		return {}
-	elsif cents < 5
-		return {:pennies => cents}
-	elsif cents == 5
-		return {:nickels => 1}
-	elsif cents == 6
-		return {:nickels => 1, :pennies => 1}
+	if cents >= 5
+		coins[:nickels] = cents/5
+		cents=cents%5
 	end
+	if cents > 0
+		coins[:pennies] = cents
+	end
+  coins
 end
+
 
 
 # make_change(110) #=> {:dollar => 1, :dime => 1}
@@ -26,7 +27,7 @@ assert(make_change(1) == {:pennies => 1})
 assert(make_change(2) == {:pennies => 2})
 assert(make_change(5) == {:nickels => 1})
 assert(make_change(6) == {:nickels => 1, :pennies => 1})
-assert(make_change(7) == {:nickels => 1, :pennies => 2})
+# assert(make_change(7) == {:nickels => 1, :pennies => 2})
 
 puts "\'Oh Hey\'"
 
