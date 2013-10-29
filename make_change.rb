@@ -4,24 +4,22 @@
 
 # The implementation
 
+US_COINSET = [
+	[:quarters, 25],
+	[:dimes,    10],
+	[:nickels,   5],
+	[:pennies,   1]
+]
+
 def make_change(cents)
   coins = {}
-	if cents >= 25
-		coins[:quarters] = cents/25
-		cents=cents%25
-	end
-	if cents >= 10
-		coins[:dimes] = cents/10
-		cents=cents%10
-	end
-	if cents >= 5
-		coins[:nickels] = cents/5
-		cents=cents%5
-	end
-	if cents > 0
-		coins[:pennies] = cents
-	end
-  coins
+  US_COINSET.each do |coin_name, coin_value|
+		if cents >= coin_value
+			coins[coin_name] = cents / coin_value
+			cents=cents % coin_value
+		end
+  end
+	coins
 end
 
 # The test support/harness/framework
