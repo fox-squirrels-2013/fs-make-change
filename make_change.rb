@@ -6,6 +6,10 @@
 
 def make_change(cents)
   coins = {}
+	if cents >= 25
+		coins[:quarters] = cents/25
+		cents=cents%25
+	end
 	if cents >= 10
 		coins[:dimes] = cents/10
 		cents=cents%10
@@ -34,5 +38,6 @@ assert(make_change(2) == {:pennies => 2})
 assert(make_change(5) == {:nickels => 1})
 assert(make_change(6) == {:nickels => 1, :pennies => 1})
 assert(make_change(10) == {:dimes => 1})
+assert(make_change(25) == {:quarters => 1})
 
 puts "OK"
