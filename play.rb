@@ -12,17 +12,19 @@ def make_change(cents)
 	end
 end
 
-
-
+def assert(test)
+	raise "Boom" unless test
+end
 
 
 
 # make_change(110) #=> {:dollar => 1, :dime => 1}
 
-p make_change(0) == {}
+assert(make_change(0) == {})
 
-p make_change(1) == {:pennies => 1}
+assert(make_change(1) == {:pennies => 1})
 
+assert(make_change(2) == {:pennies => 2})
 
 
 
