@@ -1,31 +1,31 @@
 # The final goal:
 #
-# 		make_change(110) #=> {:dollar => 1, :dime => 1}
+#     make_change(110) #=> {:dollar => 1, :dime => 1}
 
 # The implementation
 
 US_COINSET = [
-	[:quarters, 25],
-	[:dimes,    10],
-	[:nickels,   5],
-	[:pennies,   1]
+  [:quarters, 25],
+  [:dimes,    10],
+  [:nickels,   5],
+  [:pennies,   1]
 ]
 
 def make_change(cents)
   coins = {}
   US_COINSET.each do |coin_name, coin_value|
-		if cents >= coin_value
-			coins[coin_name] = cents / coin_value
-			cents=cents % coin_value
-		end
+    if cents >= coin_value
+      coins[coin_name] = cents / coin_value
+      cents=cents % coin_value
+    end
   end
-	coins
+  coins
 end
 
 # The test support/harness/framework
 
 def assert(test)
-	raise "Boom" unless test
+  raise "Boom" unless test
 end
 
 # The tests
