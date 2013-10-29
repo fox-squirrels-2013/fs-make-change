@@ -14,9 +14,8 @@ US_COINSET = [
 def make_change(cents)
   coins = {}
   US_COINSET.each do |coin_name, coin_value|
-    if cents >= coin_value
-      coins[coin_name], cents = cents.divmod(coin_value)
-    end
+    coin_count, cents = cents.divmod(coin_value)
+    coins[coin_name] = coin_count unless coin_count.zero?
   end
   coins
 end
