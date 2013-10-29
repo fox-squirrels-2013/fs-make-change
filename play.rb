@@ -1,30 +1,31 @@
 # you know when you go to order a sandwich in America
 # and you give them money and they give you change
 # there's a robot that makes the change for you
-
+def assert(test)
+	raise "Boom" unless test
+end
 
 def make_change(cents)
 
 	if cents == 0
 		return {}
+	elsif cents < 5
+		return {:pennies => cents}
 	else
-		return {:pennies => 1}
+		return {:nickels => 1}
 	end
 end
-
-def assert(test)
-	raise "Boom" unless test
-end
-
 
 
 # make_change(110) #=> {:dollar => 1, :dime => 1}
 
 assert(make_change(0) == {})
-
 assert(make_change(1) == {:pennies => 1})
-
 assert(make_change(2) == {:pennies => 2})
+assert(make_change(5) == {:nickels => 1})
+assert(make_change(6) == {:nickels => 1, :pennies => 1})
+
+puts "Life is sweet"
 
 
 
