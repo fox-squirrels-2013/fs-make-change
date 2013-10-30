@@ -12,12 +12,10 @@ US_COINSET = [
 ]
 
 def make_change(cents)
-  coins = {}
-  US_COINSET.each do |coin_name, coin_value|
+  US_COINSET.reduce Hash.new do |coins, (coin_name, coin_value)|
     coin_count, cents = cents.divmod(coin_value)
-    coins[coin_name] = coin_count unless coin_count.zero?
+    coin_count.zero? ? coins : coins.merge(coin_name => coin_count)
   end
-  coins
 end
 
 # The test support/harness/framework
@@ -32,6 +30,7 @@ end
 assert(make_change(0) == {})
 assert(make_change(1) == {:pennies => 1})
 assert(make_change(5) == {:nickels => 1})
+
 assert(make_change(10) == {:dimes => 1})
 assert(make_change(25) == {:quarters => 1})
 
